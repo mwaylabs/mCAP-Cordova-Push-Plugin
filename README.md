@@ -12,3 +12,49 @@ This plugin allows your application to receive push notifications on Android, iO
 ```
 cordova plugins add https://github.com/mwaylabs/mCAP-Cordova-Push-Plugin.git
 ```
+
+# Usage
+
+```
+// init on deviceready
+document.addEventListener('deviceready', function () {
+
+        // set the mCAP endpoint
+        mCAP.application.set('baseUrl', 'http://yourserver.com:8443/');
+        // configure the push service (UUID of the push service on the mCAP)
+        mCAP.push.set('uuid', '074C9386-4636-4135-B062-40235EEACB7F');
+        // register the plugin
+        mCAPCordovaPushPlugin.onDeviceReady({
+            // configure the senderID (Google Cloud Messaging)
+            senderId: "234234234235",
+            // register callback
+            register: function () {
+                log('register', arguments);
+            },
+            // error callback
+            error: function () {
+                log('error', arguments);
+            },
+            // token reveived callback
+            token: function () {
+                log('token', arguments);
+            },
+            // device registered success callback
+            registerdevice: function () {
+                log('registerdevice', arguments);
+            },
+            // device registered error callback
+            registerdeviceerror: function () {
+                log('registerdeviceerror', arguments);
+            },
+            // push message received callback
+            message: function () {
+                log('message', arguments);
+            },
+            // unknown state
+            unknown: function () {
+                log('unknown', arguments);
+            }
+        });
+    }, false);
+```

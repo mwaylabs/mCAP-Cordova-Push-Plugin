@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:amazon="http://schemas.android.com/apk/lib/com.amazon.device.ads"
+        id="com.mway.plugins.mCAP.PushPlugin"
+        version="0.0.1">
+
+    <name>mCAP_PushPlugin</name>
+    <author>mwaylabs</author>
+
+    <description>
+        This plugin is a wrapper for the PushPlugin (https://github.com/phonegap-build/PushPlugin) and allows your application
+        to register on push services against an mCAP.
+        This plugin allows your application to receive push notifications on Android, iOS and WP8 devices.
+        Android uses Google Cloud Messaging.
+        iOS uses Apple APNS Notifications.
+        WP8 uses Microsoft MPNS Notifications.
+    </description>
+
+    <license>MIT</license>
+    <!-- jQuery -->
+    <js-module src="www/bower_components/jquery/dist/jquery.min.js" name="jQuery">
+        <clobbers target="jQuery" />
+        <clobbers target="$" />
+    </js-module>
+    <!-- underscore -->
+    <js-module src="www/bower_components/underscore/underscore.js" name="_">
+        <clobbers target="_" />
+    </js-module>
+    <!-- underscore -->
+    <js-module src="www/underscore_wrapper.js" name="underscore">
+        <clobbers target="underscore" />
+    </js-module>
+    <!-- Backbone -->
+    <js-module src="www/bower_components/backbone/backbone.js" name="_Backbone">
+        <clobbers target="Backbone" />
+    </js-module>
+
+    <!-- URI -->
+    <js-module src="www/bower_components/uri.js/src/punycode.js" name="punycode">
+        <clobbers target="punycode" />
+    </js-module>
+
+    <js-module src="www/bower_components/uri.js/src/IPv6.js" name="IPv6">
+        <clobbers target="IPv6" />
+    </js-module>
+
+    <js-module src="www/bower_components/uri.js/src/SecondLevelDomains.js" name="SecondLevelDomains">
+        <clobbers target="SecondLevelDomains" />
+    </js-module>
+
+    <js-module src="www/bower_components/uri.js/src/URI.js" name="URI">
+        <clobbers target="URI" />
+    </js-module>
+
+    <!-- mCAPjs-client -->
+    <js-module src="www/bower_components/mcapjs-client/dist/mcap.js" name="_mCAP">
+        <clobbers target="_mCAP" />
+    </js-module>
+    <!-- mCAP cordova push plugin -->
+    <js-module src="www/driver.com.phonegap.plugins.PushPlugin.js" name="mCAPCordovaPushPlugin">
+        <clobbers target="mCAPCordovaPushPlugin" />
+    </js-module>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <!-- dependencies -->
+    <!-- Device Plugin -->
+    <dependency id="org.apache.cordova.device" url="https://github.com/apache/cordova-plugin-device.git" commit="master" />
+    <!-- PushPlugin -->
+    <dependency id="com.phonegap.plugins.PushPlugin" url="https://github.com/phonegap-build/PushPlugin.git" commit="master" />
+
+</plugin>

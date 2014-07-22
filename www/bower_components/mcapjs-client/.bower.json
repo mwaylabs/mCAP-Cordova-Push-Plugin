@@ -1,0 +1,40 @@
+{
+  "name": "mcapjs-client",
+  "version": "0.0.14",
+  "homepage": "https://github.com/mwaylabs/mcapjs-client",
+  "authors": [
+    "mwaylabs"
+  ],
+  "description": "mCAP Client Library",
+  "main": "mCAP.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "mCAP",
+    "MEAP"
+  ],
+  "license": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.1.2",
+    "jquery": "~2.1.1",
+    "underscore": "~1.6.0",
+    "uri.js": "~1.13.2"
+  },
+  "_release": "0.0.14",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.14",
+    "commit": "25ab38e55c6af02ef37f2ed3a411c66887e86ba6"
+  },
+  "_source": "git://github.com/mwaylabs/mcapjs-client.git",
+  "_target": "~0.0.13",
+  "_originalSource": "mcapjs-client"
+}

@@ -1,0 +1,8 @@
+.idea
+.DS_Store
+node_modules
+relution-release.zip
+mcap-generator-ionic.zip
+npm-debug.log
+password.js
+online.conf.js

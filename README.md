@@ -13,6 +13,21 @@ This plugin allows your application to receive push notifications on Android, iO
 cordova plugins add https://github.com/mwaylabs/mcap-cordova-push-plugin.git
 ```
 
+# TL;DR
+
+```
+cordova create Baz
+cd Baz
+cordova platform add android
+cordova plugins add https://github.com/mwaylabs/mcap-cordova-push-plugin.git
+```
+
+copy and paste the example [index.html](https://github.com/mwaylabs/mCAP-Cordova-Push-Plugin/blob/master/Example/index.html) remember to set the correct ids and server.
+
+```
+cordova run android
+```
+
 # Usage
 
 ```
@@ -60,17 +75,4 @@ document.addEventListener('deviceready', function () {
 ```
 
 
-# TL;DR
 
-```
-cordova create Baz
-cd Baz
-cordova platform add android
-cordova plugins add https://github.com/mwaylabs/mCAP-Cordova-Push-Plugin.git
-```
-
-copy and paste the example [index.html](https://github.com/mwaylabs/mCAP-Cordova-Push-Plugin/blob/master/Example/index.html) remember to set the correct ids and server.
-
-```
-cordova run android
-```

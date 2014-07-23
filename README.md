@@ -1,4 +1,4 @@
-# mCAP Cordova Pushplugin
+# mCAP Cordova Push Plugin
 
 This plugin is a wrapper for the PushPlugin (https://github.com/phonegap-build/PushPlugin) and allows your application to register on push services against an mCAP.
 This plugin allows your application to receive push notifications on Android, iOS and WP8 devices.
@@ -10,7 +10,7 @@ This plugin allows your application to receive push notifications on Android, iO
 # Installation
 
 ```
-cordova plugins add https://github.com/mwaylabs/mcap-cordova-pushplugin.git
+cordova plugins add https://github.com/mwaylabs/mcap-cordova-push-plugin.git
 ```
 
 # Usage

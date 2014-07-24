@@ -1,6 +1,6 @@
 {
   "name": "mcapjs-client",
-  "version": "0.0.14",
+  "version": "0.0.16",
   "homepage": "https://github.com/mwaylabs/mcapjs-client",
   "authors": [
     "mwaylabs"
@@ -28,11 +28,11 @@
     "underscore": "~1.6.0",
     "uri.js": "~1.13.2"
   },
-  "_release": "0.0.14",
+  "_release": "0.0.16",
   "_resolution": {
     "type": "version",
-    "tag": "v0.0.14",
-    "commit": "25ab38e55c6af02ef37f2ed3a411c66887e86ba6"
+    "tag": "v0.0.16",
+    "commit": "5f6bfb02869e65417145ff4e547d21355c6b007e"
   },
   "_source": "git://github.com/mwaylabs/mcapjs-client.git",
   "_target": "~0.0.13",

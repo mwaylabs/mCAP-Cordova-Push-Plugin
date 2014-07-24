@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.16 - 2014-07-24
+- update mCAP.PushNotification API
+
+## 0.0.15 - 2014-07-24
+- add unauthorized event if any response raises an 401 error
+- add mCAP.PushNotification
+- changed mCAP.push collection API
+
 ## 0.0.14 - 2014-07-22
 - make sure backbone has jquery
 - resolve the fetch of a push app when devices, tags, jobs and own fetch are resolved

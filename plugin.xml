@@ -58,7 +58,7 @@
         <clobbers target="_mCAP" />
     </js-module>
     <!-- mCAP cordova push plugin -->
-    <js-module src="www/driver.com.phonegap.plugins.PushPlugin.js" name="mCAPCordovaPushPlugin">
+    <js-module src="www/driver.com.phonegap.plugins.push.js" name="mCAPCordovaPushPlugin">
         <clobbers target="mCAPCordovaPushPlugin" />
     </js-module>
 

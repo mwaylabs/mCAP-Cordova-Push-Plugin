@@ -39,15 +39,33 @@
         </ul>
     </div>
 </div>
-<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="../www/bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="../www/bower_components/underscore/underscore.js"></script>
+<script type="text/javascript" src="../www/bower_components/backbone/backbone.js"></script>
+<script type="text/javascript" src="../www/bower_components/uri.js/src/URI.min.js"></script>
+<script type="text/javascript" src="../www/bower_components/mcapjs-client/dist/mcap.js"></script>
+<script>
+    module = {
+        exports: ''
+    };
+    window.plugins = {
+        pushNotification: {
+            register: function(token){
+                token('123123123123');
+            }
+        }
+    };
+    window.device = {};
+</script>
+<script type="text/javascript" src="../www/driver.com.phonegap.plugins.push.js"></script>
 <script type="text/javascript">
 
-    function update() {
+    function update(){
         var name = $('#device-name').val();
         pushNotification.set('name', name);
-        pushNotification.save().then(function () {
+        pushNotification.save().then(function(){
             log('updated information');
-        }).fail(function () {
+        }).fail(function(){
             log('error on information update');
         });
     }
@@ -57,51 +75,51 @@
         $('#app-status-ul').append('<li>' + JSON.stringify(arguments) + '</li>')
     }
 
-    document.addEventListener('deviceready', function () {
+//    document.addEventListener('deviceready', function () {
 
-        mCAP.application.set('baseUrl', 'http://SERVER.COM');
+        mCAP.application.set('baseUrl', 'http://10.21.4.97:8079');
 
         pushNotification = new mCAP.PushNotification({
-            pushServiceId: '<PUSH_UIID>',
-            senderId: '<GOOGLE_ID>'
+            pushServiceId: 'E46628FC-7BE9-478F-90C3-E4442A43331E',
+            senderId: '762282634093'
         });
 
         pushNotification.register();
 
-        pushNotification.on('register', function () {
+        pushNotification.on('register', function(){
             log('register', arguments);
         });
 
-        pushNotification.on('error', function () {
+        pushNotification.on('error', function(){
             log('error', arguments);
         });
 
-        pushNotification.on('token', function () {
+        pushNotification.on('token', function(){
             log('token', arguments);
         });
 
-        pushNotification.on('registerdevice', function () {
+        pushNotification.on('registerdevice', function(){
             log('registerdevice', arguments);
             $('#device-name').val(pushNotification.get('name'));
         });
 
-        pushNotification.on('registerdeviceerror', function () {
+        pushNotification.on('registerdeviceerror', function(){
             log('registerdeviceerror', arguments);
         });
 
-        pushNotification.on('message', function () {
+        pushNotification.on('message', function(){
             log('message', arguments);
         });
 
-        pushNotification.on('badge', function () {
+        pushNotification.on('badge', function(){
             log('badge', arguments);
         });
 
-        pushNotification.on('unknown', function () {
+        pushNotification.on('unknown', function(){
             log('unknown', arguments);
         });
 
-    }, false);
+//    }, false);
 </script>
 </body>
 </html>

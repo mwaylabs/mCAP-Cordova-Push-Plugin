@@ -78,5 +78,7 @@ cordova run android
     }, false);
 ```
 
+# API
+[Push Notification Object definition](https://github.com/mwaylabs/mcapjs-client/blob/master/src/push/push_notification.js)
 
 

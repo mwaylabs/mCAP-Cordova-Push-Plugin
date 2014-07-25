@@ -85,6 +85,114 @@ cordova run android
 # API
 [Push Notification Object definition](https://github.com/mwaylabs/mcapjs-client/blob/master/src/push/push_notification.js)
 
+## PushNotification Attributes
+- pushServiceId
+  - UUID of the mCAP Push Service (String)
+- providerType
+  - The push provider type
+  - 'GCM': Google Cloud Messaging (String, mCAP.GCM)
+  - 'APNS': Apple Push Notification Service (String, mCAP.APNS)
+  - 'MCAP': mCAP Push Notification Service (String, mCAP.MCAP)
+- user
+  - Username of the device/app (String)
+- vendor
+  - Vendor name of the device (String)
+- name
+  - The device model name (String)
+- osVersion
+  - The device operating system version (String)
+- language
+  - Language Code (String)
+- country
+  - Country Code (String)
+- tags
+  - List of registered Tags (String Array)
+- badge
+  - The current Badge counter (Number)
+- appVersion
+  - The application Version (String)
+- attributes
+  - List of extra attributes (Object)
+
+## PushNotification Methods
+- get(String:AttributeName)
+    - returns the value to the given AttributeName
+- set(String:AttributeName, *:Value)
+    - sets the value to the given AttributeName
+- getConfiguration()
+    - Returns the configuration 
+- addAttribute(String:AttributeName, *:Value)
+    -  Add an extra attribute
+- removeAttribute(String:AttributeName)
+    - Remove an extra attribute
+- addAttributes(Object:AttributeObject)
+    - Add extra attributes
+    - addAttributes({title:'My App', name:'Relution'})
+- removeAttributes(StringArray:AttributeNames)
+    - Remove extra attributes
+    - removeAttributes(['title', 'name'])
+- removeAttributes(String:attributeName, String:AttributeName, ...)
+    - Remove extra attributes
+    - removeAttributes('title', 'name')
+- putAttributeValue(String:AttributeName, *:AttributeValue)
+    - Add an extra attribute 
+- addTag(String:TagName)
+    - Add a tag
+- removeTag(String:TagName)
+    - Remove a tag
+- addTags(StringArray:AttributeTags)
+    - Add multiple tags
+    - addTags('sport', 'politics')
+- removeTags(StringArray:AttributeNames)
+    - Remove tags
+    - removeTags(['sports', 'politics'])
+- subscribeTag(String:TagName)
+    - Subscribe to a tag
+    - Same as addTag
+- subscribeTags(StringArray:AttributeTags)
+    - Same as addTags
+- setCountry(String:CountryCode)
+    - Set the country
+    - set('en')
+    - setCountry('en')
+- setCurrentBadge(Number:BadgeNumber)
+    - setCurrentBadge('badge', 3);
+    - set('badge', 3);
+- setToken(String:Token)
+    - setToken('3asdf2233');
+    - set('token', '3asdf2233');
+- setLanguage(String:Language)
+    - setLanguage('DE');
+    - set('language', 'DE');
+- setModel(String:Modelname)
+    - setModel('iPhone 4s')
+    - set('name', 'iPhone 4s')
+- setUser(String:UserName)
+    - setUser('Max Mustermann')
+    - set('user', 'Max Mustermann')
+- unsubscribeTag(String:TagName)
+    - unsubscribe from a tag
+- unregisterDevice()
+    - Remove the device from the mcap push list
+- registerDevice()
+    - Add the device to the mcap push list
+- save()
+    - Change settings to the device
+- sendStatusBarNotification()
+    - Show a Statusbar notification
+    - (neeeds to be implmented for each driver)
+- showToastNotification
+    - Show a Toast Notification
+    - (neeeds to be implmented for each driver)
+- updateDeviceBadge
+    - Update the Badge
+    - (neeeds to be implmented for each driver)
+- register
+    - register the app/device against the Push Notification Server
+- unregister
+    - unregister the app/device against the Push Notification Server
+
+
 ## Events
 - register
     - Called when the app was registered at the push server (mCAP, Apple Push Notification or Google Cloud Notification)

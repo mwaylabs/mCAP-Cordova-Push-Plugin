@@ -85,7 +85,7 @@ mCAP.PushNotification.prototype._createDevice = function(token){
     this.device.set('name', device.model);
     this.device.set('osVersion', device.version);
     this.device.set('language', language.substr(0, 2));
-    this.device.set('country', language.substr(4, 5) || '');
+    this.device.set('country', language.substr(3, 4) || '');
     this.device.set('token', token);
 
     return this.device.save().then(function(){

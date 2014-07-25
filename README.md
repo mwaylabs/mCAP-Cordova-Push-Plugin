@@ -32,45 +32,49 @@ cordova run android
 
 ```
 // init on deviceready
-document.addEventListener('deviceready', function () {
+    document.addEventListener('deviceready', function () {
 
-        // set the mCAP endpoint
-        mCAP.application.set('baseUrl', 'http://yourserver.com:8443/');
-        // configure the push service (UUID of the push service on the mCAP)
-        mCAP.push.set('uuid', '074C9386-4636-4135-B062-40235EEACB7F');
-        // register the plugin
-        mCAPCordovaPushPlugin.onDeviceReady({
-            // configure the senderID (Google Cloud Messaging)
-            senderId: "234234234235",
-            // register callback
-            register: function () {
-                log('register', arguments);
-            },
-            // error callback
-            error: function () {
-                log('error', arguments);
-            },
-            // token reveived callback
-            token: function () {
-                log('token', arguments);
-            },
-            // device registered success callback
-            registerdevice: function () {
-                log('registerdevice', arguments);
-            },
-            // device registered error callback
-            registerdeviceerror: function () {
-                log('registerdeviceerror', arguments);
-            },
-            // push message received callback
-            message: function () {
-                log('message', arguments);
-            },
-            // unknown state
-            unknown: function () {
-                log('unknown', arguments);
-            }
+        mCAP.application.set('baseUrl', 'http://SERVER.COM');
+
+        pushNotification = new mCAP.PushNotification({
+            pushServiceId: '<PUSH_UIID>',
+            senderId: '<GOOGLE_ID>'
         });
+
+        pushNotification.register();
+
+        pushNotification.on('register', function () {
+            console.log('register', arguments);
+        });
+
+        pushNotification.on('error', function () {
+            console.log('error', arguments);
+        });
+
+        pushNotification.on('token', function () {
+            console.log('token', arguments);
+        });
+
+        pushNotification.on('registerdevice', function () {
+            console.log('registerdevice', arguments);
+        });
+
+        pushNotification.on('registerdeviceerror', function () {
+            console.log('registerdeviceerror', arguments);
+        });
+
+        pushNotification.on('message', function () {
+            console.log('message', arguments);
+        });
+
+        pushNotification.on('badge', function () {
+            console.log('badge', arguments);
+        });
+
+        pushNotification.on('unknown', function () {
+            console.log('unknown', arguments);
+        });
+
     }, false);
 ```
 

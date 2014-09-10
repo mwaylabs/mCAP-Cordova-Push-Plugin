@@ -32,47 +32,181 @@ cordova run android
 
 ```
 // init on deviceready
-document.addEventListener('deviceready', function () {
-
-        // set the mCAP endpoint
-        mCAP.application.set('baseUrl', 'http://yourserver.com:8443/');
-        // configure the push service (UUID of the push service on the mCAP)
-        mCAP.push.set('uuid', '074C9386-4636-4135-B062-40235EEACB7F');
-        // register the plugin
-        mCAPCordovaPushPlugin.onDeviceReady({
-            // configure the senderID (Google Cloud Messaging)
-            senderId: "234234234235",
-            // register callback
-            register: function () {
-                log('register', arguments);
-            },
-            // error callback
-            error: function () {
-                log('error', arguments);
-            },
-            // token reveived callback
-            token: function () {
-                log('token', arguments);
-            },
-            // device registered success callback
-            registerdevice: function () {
-                log('registerdevice', arguments);
-            },
-            // device registered error callback
-            registerdeviceerror: function () {
-                log('registerdeviceerror', arguments);
-            },
-            // push message received callback
-            message: function () {
-                log('message', arguments);
-            },
-            // unknown state
-            unknown: function () {
-                log('unknown', arguments);
-            }
+    document.addEventListener('deviceready', function () {
+// set the endpoint of the server
+        mCAP.application.set('baseUrl', 'http://SERVER.COM');
+// create a push notification
+        pushNotification = new mCAP.PushNotification({
+            // the uuid of the push service
+            pushServiceId: '<PUSH_SERVICE_UIID>',
+            // the api key from google
+            senderId: '<GOOGLE_ID>'
         });
+
+        // register the device
+        pushNotification.register();
+
+        // Event overview
+        pushNotification.on('register', function () {
+            console.log('register', arguments);
+        });
+
+        pushNotification.on('error', function () {
+            console.log('error', arguments);
+        });
+
+        pushNotification.on('token', function () {
+            console.log('token', arguments);
+        });
+
+        pushNotification.on('registerdevice', function () {
+            console.log('registerdevice', arguments);
+        });
+
+        pushNotification.on('registerdeviceerror', function () {
+            console.log('registerdeviceerror', arguments);
+        });
+
+        pushNotification.on('message', function () {
+            console.log('message', arguments);
+        });
+
+        pushNotification.on('badge', function () {
+            console.log('badge', arguments);
+        });
+
+        pushNotification.on('unknown', function () {
+            console.log('unknown', arguments);
+        });
+
     }, false);
 ```
 
+# API
+[Push Notification Object definition](https://github.com/mwaylabs/mcapjs-client/blob/master/src/push/push_notification.js)
+
+## PushNotification Attributes
+- pushServiceId
+  - UUID of the mCAP Push Service (String)
+- providerType
+  - The push provider type
+  - 'GCM': Google Cloud Messaging (String, mCAP.GCM)
+  - 'APNS': Apple Push Notification Service (String, mCAP.APNS)
+  - 'MCAP': mCAP Push Notification Service (String, mCAP.MCAP)
+- user
+  - Username of the device/app (String)
+- vendor
+  - Vendor name of the device (String)
+- name
+  - The device model name (String)
+- osVersion
+  - The device operating system version (String)
+- language
+  - Language Code (String)
+- country
+  - Country Code (String)
+- tags
+  - List of registered Tags (String Array)
+- badge
+  - The current Badge counter (Number)
+- appVersion
+  - The application Version (String)
+- attributes
+  - List of extra attributes (Object)
+
+## PushNotification Methods
+- get(String:AttributeName)
+    - returns the value to the given AttributeName
+- set(String:AttributeName, *:Value)
+    - sets the value to the given AttributeName
+- getConfiguration()
+    - Returns the configuration 
+- addAttribute(String:AttributeName, *:Value)
+    -  Add an extra attribute
+- removeAttribute(String:AttributeName)
+    - Remove an extra attribute
+- addAttributes(Object:AttributeObject)
+    - Add extra attributes
+    - addAttributes({title:'My App', name:'Relution'})
+- removeAttributes(StringArray:AttributeNames)
+    - Remove extra attributes
+    - removeAttributes(['title', 'name'])
+- removeAttributes(String:attributeName, String:AttributeName, ...)
+    - Remove extra attributes
+    - removeAttributes('title', 'name')
+- putAttributeValue(String:AttributeName, *:AttributeValue)
+    - Add an extra attribute 
+- addTag(String:TagName)
+    - Add a tag
+- removeTag(String:TagName)
+    - Remove a tag
+- addTags(StringArray:AttributeTags)
+    - Add multiple tags
+    - addTags('sport', 'politics')
+- removeTags(StringArray:AttributeNames)
+    - Remove tags
+    - removeTags(['sports', 'politics'])
+- subscribeTag(String:TagName)
+    - Subscribe to a tag
+    - Same as addTag
+- subscribeTags(StringArray:AttributeTags)
+    - Same as addTags
+- setCountry(String:CountryCode)
+    - Set the country
+    - set('en')
+    - setCountry('en')
+- setCurrentBadge(Number:BadgeNumber)
+    - setCurrentBadge('badge', 3);
+    - set('badge', 3);
+- setToken(String:Token)
+    - setToken('3asdf2233');
+    - set('token', '3asdf2233');
+- setLanguage(String:Language)
+    - setLanguage('DE');
+    - set('language', 'DE');
+- setModel(String:Modelname)
+    - setModel('iPhone 4s')
+    - set('name', 'iPhone 4s')
+- setUser(String:UserName)
+    - setUser('Max Mustermann')
+    - set('user', 'Max Mustermann')
+- unsubscribeTag(String:TagName)
+    - unsubscribe from a tag
+- unregisterDevice()
+    - Remove the device from the mcap push list
+- registerDevice()
+    - Add the device to the mcap push list
+- save()
+    - Change settings to the device
+- sendStatusBarNotification()
+    - Show a Statusbar notification
+    - (neeeds to be implmented for each driver)
+- showToastNotification
+    - Show a Toast Notification
+    - (neeeds to be implmented for each driver)
+- updateDeviceBadge
+    - Update the Badge
+    - (neeeds to be implmented for each driver)
+- register
+    - register the app/device against the Push Notification Server
+- unregister
+    - unregister the app/device against the Push Notification Server
 
 
+## Events
+- register
+    - Called when the app was registered at the push server (mCAP, Apple Push Notification or Google Cloud Notification)
+- error
+    - Called on different errors
+- token
+    - Called if the app receives a token
+- registerdevice
+    - Called if the app was successfully registered at the mCAP
+- registerdeviceerror
+    - Called if the app was unsuccessfully registered at the mCAP
+- message
+    - Called when a message (Push Notification) received
+- badge
+    - Called on a badge update
+- unknown
+    - Called if there was an unknown state

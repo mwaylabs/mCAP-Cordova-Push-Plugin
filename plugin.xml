@@ -2,7 +2,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:amazon="http://schemas.android.com/apk/lib/com.amazon.device.ads"
-        id="com.mway.plugins.mCAP.PushPlugin"
+        id="mcap-cordova-plugin-push"
         version="0.0.2">
 
     <name>mCAP_PushPlugin</name>
@@ -68,7 +68,7 @@
 
     <!-- dependencies -->
     <!-- Device Plugin -->
-    <dependency id="org.apache.cordova.device" url="https://github.com/apache/cordova-plugin-device.git" commit="master" />
+    <dependency id="cordova-plugin-device" url="https://github.com/apache/cordova-plugin-device.git" commit="master" />
     <!-- PushPlugin -->
     <dependency id="com.phonegap.plugins.PushPlugin" url="https://github.com/phonegap-build/PushPlugin.git" commit="master" />
 
